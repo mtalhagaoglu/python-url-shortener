@@ -37,3 +37,11 @@ def getLink(shortened):
     except:
         return False
 
+def getCount(shortened):
+    cursor = connection.cursor()
+    try:
+        cursor.execute("SELECT count FROM links WHERE shortened=?", (shortened,))
+        data = list(cursor.fetchall()[0])[0]
+        return str(data)
+    except:
+        return 0

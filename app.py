@@ -80,7 +80,10 @@ def redirect_url(hash):
         flash("Error: Shortened url does not exist.")
         return redirect(url_for('add'))
 
-
+@app.route("/<hash>/stat")
+def stat(hash):
+    count = shortener.getCount(hash)
+    return render_template("stat.html",data=count)
 
 if __name__ == "__main__":
     app.run()
