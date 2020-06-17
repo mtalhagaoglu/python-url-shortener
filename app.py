@@ -9,6 +9,8 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = 'SjdnUends821Jsdlkvxh391ksdODnejdDw'
 
+password = "123" # change that password for security.
+
 class AddingForm(Form):
     link = TextField('Link:', validators=[validators.required()])
     password = TextField('Password:', validators=[validators.required()])
@@ -39,7 +41,7 @@ def add():
         password=request.form['password']
 
         if form.validate():
-            if(password == "123"):
+            if(password == password):
                 if (shorten == ""):
                     shorten = id_generator()
                 addLink(link, shorten)
@@ -59,7 +61,7 @@ def remove():
         password=request.form['password']
 
         if form.validate():
-            if(password == "123"):
+            if(password == password):
                 removeLink(shorten)
                 flash('Link removed: domain.com/{}'.format(shorten))
             else:
