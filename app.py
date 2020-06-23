@@ -8,8 +8,10 @@ DEBUG = True
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = 'SjdnUends821Jsdlkvxh391ksdODnejdDw'
+app.static_folder = 'static'
 
-password = "123" # change that password for security.
+security = "123" # change that password for security.
+domain_address = "domain.com" # change that also.
 
 class AddingForm(Form):
     link = TextField('Link:', validators=[validators.required()])
@@ -41,17 +43,17 @@ def add():
         password=request.form['password']
 
         if form.validate():
-            if(password == password):
+            if(password == security):
                 if (shorten == ""):
                     shorten = id_generator()
                 addLink(link, shorten)
-                flash('Link created: domain.com/{}'.format(shorten))
+                flash('Link created: {}/{}'.format(domain_address,shorten))
             else:
                 flash("Error: Password is wrong")
         else:
             flash('Error: All Fields are Required')
 
-    return render_template('add.html', form=form)
+    return render_template('add.html', form=form,domain_address=domain_address)
 
 @app.route("/remove", methods=['GET', 'POST'])
 def remove():
@@ -61,15 +63,15 @@ def remove():
         password=request.form['password']
 
         if form.validate():
-            if(password == password):
+            if(password == security):
                 removeLink(shorten)
-                flash('Link removed: domain.com/{}'.format(shorten))
+                flash('Link removed: {}/{}'.format(domain_address, shorten))
             else:
                 flash("Error: Password is wrong")
         else:
             flash('Error: All Fields are Required')
 
-    return render_template('remove.html', form=form)
+    return render_template('remove.html', form=form,domain_address=domain_address)
 
 @app.route('/<hash>/')
 def redirect_url(hash):

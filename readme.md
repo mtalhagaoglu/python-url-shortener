@@ -34,5 +34,4 @@ domain.com/{SHORTENED_LINK}/stat for see visit count
 
 ### Todos
 
- - Build better UI
  - Think about removing password protection

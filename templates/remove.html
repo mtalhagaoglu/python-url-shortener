@@ -1,42 +1,62 @@
-<html>
-  <head>
-     <title>Demo Form</title>
-     <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Url Shortener - Remove</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="stylesheet" rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.ico') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" >
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}" >
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animate/animate.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css') }}" >
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animsition/css/animsition.min.css') }}" >
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}" href="">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.css') }}" >
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/util.css') }}" href="">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" href="">
+<!--===============================================================================================-->
+</head>
+<body>
 
-  </head>
-  <body>
 
-    <div class="container"><br>
-      <center>
-        <h2>Remove Link</h2>
-      </center>
-    </div>
+	<div class="container-contact100">
 
-    <div class=container"><br>
-    <div class="row align-items-center justify-content-center">
-    <div class="col-md-4">
-      <form  action="" method="post" role="form">
-        {{ form.csrf }}
-        <div class="form-group">
-          <label for="surname">Shorten:</label>
-          <input type="text" class="form-control" id="shorten" name="shorten" placeholder="domain.com/shorten">
-	    <br>
-	  <label for="password">Password:</label>
-	  <input type="password" class="form-control" id="password" name="password" placeholder="Enter a password.">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" method="post" role="form">
+				<span class="contact100-form-title">
+					Remove Shortened URL
+				</span>
 
-	</div>
-        <br>
+				<div class="wrap-input100 validate-input" data-validate="Please enter shortened">
+					<input type="text" class="input100" id="shorten" name="shorten" placeholder={{ domain_address + '/shortened' }}>
+					<span class="focus-input100"></span>
+				</div>
 
-        <center>
-          <button type="submit" class="btn btn-success">Submit</button>
-        </center>
-      </form>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter the password">
+					<input type="password" class="input100" id="password" name="password" placeholder="Enter the password.">
+					<span class="focus-input100"></span>
+				</div>
 
-      <br>
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn">
+						<span>
+							<i class="fa fa-trash m-r-6" aria-hidden="true"></i>
+							Remove
+						</span>
+					</button>
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
+				</div>
+				<div class="container-contact100-form-btn">
+					{% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
 
         {% for message in messages %}
@@ -54,10 +74,33 @@
         {% endfor %}
             {% endif %}
         {% endwith %}
+				</div>
+			</form>
+		</div>
+	</div>
 
-    </div>
-    <br>
-    </div>
-    </div>
-  </body>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+
+
+</body>
 </html>
