@@ -26,12 +26,11 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
 def addLink(link, shorten):
-    print(link)
-    print(shorten)
+
     shortener.addLink(link,shorten)
 
 def removeLink(shorten):
-    print(shorten)
+
     shortener.removeLink(shorten)
 
 @app.route("/add", methods=['GET', 'POST'])
@@ -75,7 +74,7 @@ def remove():
 
 @app.route('/<hash>/')
 def redirect_url(hash):
-    url = shortener.getLink(hash)
+    url = shortener.getLink(hash,request.remote_addr)
     if(url):
         print(True)
         return redirect(url)
